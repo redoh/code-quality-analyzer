@@ -34,7 +34,7 @@ function normalizeLines(source: string): string[] {
     line
       .trim()
       .replace(/\s+/g, " ")
-      .replace(/\/\/.*$/, "")
+      .replace(/\/\/.*$/, ""),
   );
 }
 

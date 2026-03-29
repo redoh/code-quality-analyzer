@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import Table from "cli-table3";
-import { ProjectAnalysis, FileAnalysis, QualityGrade } from "../types.js";
+import { ProjectAnalysis, QualityGrade } from "../types.js";
 
 export function reportToConsole(analysis: ProjectAnalysis): void {
   printHeader();
@@ -20,10 +20,7 @@ function printSummary(analysis: ProjectAnalysis): void {
   const { summary } = analysis;
 
   const summaryTable = new Table({
-    head: [
-      chalk.white("Metric"),
-      chalk.white("Value"),
-    ],
+    head: [chalk.white("Metric"), chalk.white("Value")],
     style: { head: [], border: [] },
     colWidths: [30, 25],
   });
@@ -155,8 +152,9 @@ function printGrade(analysis: ProjectAnalysis): void {
   const gradeColor = getGradeColor(summary.grade);
 
   console.log(
-    chalk.bold("  Quality Grade: ") + gradeColor(` ${summary.grade} `) +
-    chalk.gray(` (${summary.score}/100)`),
+    chalk.bold("  Quality Grade: ") +
+      gradeColor(` ${summary.grade} `) +
+      chalk.gray(` (${summary.score}/100)`),
   );
   console.log();
 
@@ -212,10 +210,15 @@ function colorScore(value: number): string {
 
 function getGradeColor(grade: QualityGrade) {
   switch (grade) {
-    case "A": return chalk.bgGreen.black;
-    case "B": return chalk.bgYellow.black;
-    case "C": return chalk.bgHex("#FFA500").black;
-    case "D": return chalk.bgRed.white;
-    case "F": return chalk.bgRed.white;
+    case "A":
+      return chalk.bgGreen.black;
+    case "B":
+      return chalk.bgYellow.black;
+    case "C":
+      return chalk.bgHex("#FFA500").black;
+    case "D":
+      return chalk.bgRed.white;
+    case "F":
+      return chalk.bgRed.white;
   }
 }

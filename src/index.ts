@@ -17,17 +17,17 @@ program
   .description("Analyze code quality of a file or directory")
   .argument("<path>", "File or directory to analyze")
   .option("-f, --format <format>", "Output format: table or json", "table")
-  .option("-t, --threshold <number>", "Minimum quality score (0-100). Exit with code 1 if below", "0")
+  .option(
+    "-t, --threshold <number>",
+    "Minimum quality score (0-100). Exit with code 1 if below",
+    "0",
+  )
   .option(
     "-e, --extensions <exts>",
     "File extensions to analyze (comma-separated)",
     ".ts,.js,.tsx,.jsx",
   )
-  .option(
-    "--exclude <dirs>",
-    "Additional directories to exclude (comma-separated)",
-    "",
-  )
+  .option("--exclude <dirs>", "Additional directories to exclude (comma-separated)", "")
   .action(async (targetPath: string, opts) => {
     try {
       const options: AnalyzeOptions = {
