@@ -1,0 +1,38 @@
+{
+  "name": "code-quality-analyzer",
+  "version": "1.0.0",
+  "description": "CLI tool for analyzing code quality with industry-standard software metrics",
+  "main": "dist/index.js",
+  "bin": {
+    "cqa": "dist/index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src/"
+  },
+  "keywords": [
+    "code-quality",
+    "static-analysis",
+    "complexity",
+    "metrics",
+    "cli"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.2.0"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "cli-table3": "^0.6.3",
+    "commander": "^12.0.0",
+    "glob": "^10.3.0",
+    "typescript": "^5.3.0"
+  }
+}
