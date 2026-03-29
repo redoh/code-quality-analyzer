@@ -97,9 +97,7 @@ describe("CLI integration", () => {
   it("should detect functions in fixture file", () => {
     const { stdout } = run(`analyze ${FIXTURE_FILE} --format json`);
     const result = JSON.parse(stdout);
-    const functionNames = result.files[0].functions.map(
-      (f: { name: string }) => f.name,
-    );
+    const functionNames = result.files[0].functions.map((f: { name: string }) => f.name);
     expect(functionNames).toContain("loadConfig");
     expect(functionNames).toContain("validateConfig");
     expect(functionNames).toContain("processItems");
