@@ -22,7 +22,6 @@ export function analyzeComplexity(source: string): FunctionMetrics[] {
 
 function extractFunctions(source: string): FunctionBlock[] {
   const functions: FunctionBlock[] = [];
-  const lines = source.split("\n");
   const cleaned = stripComments(source);
   const cleanedLines = cleaned.split("\n");
 
@@ -125,11 +124,35 @@ function computeCyclomaticComplexity(body: string): number {
 
 function isKeyword(name: string): boolean {
   const keywords = new Set([
-    "if", "else", "for", "while", "do", "switch", "case",
-    "break", "continue", "return", "throw", "try", "catch",
-    "finally", "new", "delete", "typeof", "instanceof",
-    "import", "export", "default", "from", "class", "extends",
-    "super", "this", "void", "with", "debugger",
+    "if",
+    "else",
+    "for",
+    "while",
+    "do",
+    "switch",
+    "case",
+    "break",
+    "continue",
+    "return",
+    "throw",
+    "try",
+    "catch",
+    "finally",
+    "new",
+    "delete",
+    "typeof",
+    "instanceof",
+    "import",
+    "export",
+    "default",
+    "from",
+    "class",
+    "extends",
+    "super",
+    "this",
+    "void",
+    "with",
+    "debugger",
   ]);
   return keywords.has(name);
 }

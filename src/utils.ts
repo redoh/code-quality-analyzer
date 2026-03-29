@@ -18,34 +18,90 @@ export function round(value: number, decimals: number = 2): number {
 }
 
 export function tokenize(code: string): string[] {
-  return code
-    .replace(/\/\/.*$/gm, "")
-    .replace(/\/\*[\s\S]*?\*\//g, "")
-    .replace(/(['"`])(?:(?!\1|\\).|\\.)*\1/g, "STRING")
-    .match(/[a-zA-Z_$][\w$]*|\d+\.?\d*|[^\s\w]/g) || [];
+  return (
+    code
+      .replace(/\/\/.*$/gm, "")
+      .replace(/\/\*[\s\S]*?\*\//g, "")
+      .replace(/(['"`])(?:(?!\1|\\).|\\.)*\1/g, "STRING")
+      .match(/[a-zA-Z_$][\w$]*|\d+\.?\d*|[^\s\w]/g) || []
+  );
 }
 
 export function stripComments(code: string): string {
-  return code
-    .replace(/\/\/.*$/gm, "")
-    .replace(/\/\*[\s\S]*?\*\//g, "");
+  return code.replace(/\/\/.*$/gm, "").replace(/\/\*[\s\S]*?\*\//g, "");
 }
 
 const JS_OPERATORS = new Set([
-  "+", "-", "*", "/", "%", "**",
-  "=", "+=", "-=", "*=", "/=", "%=",
-  "==", "!=", "===", "!==", ">", "<", ">=", "<=",
-  "&&", "||", "!", "??",
-  "&", "|", "^", "~", "<<", ">>", ">>>",
-  "?", ":", ".",
-  "++", "--",
+  "+",
+  "-",
+  "*",
+  "/",
+  "%",
+  "**",
+  "=",
+  "+=",
+  "-=",
+  "*=",
+  "/=",
+  "%=",
+  "==",
+  "!=",
+  "===",
+  "!==",
+  ">",
+  "<",
+  ">=",
+  "<=",
+  "&&",
+  "||",
+  "!",
+  "??",
+  "&",
+  "|",
+  "^",
+  "~",
+  "<<",
+  ">>",
+  ">>>",
+  "?",
+  ":",
+  ".",
+  "++",
+  "--",
   "=>",
-  "if", "else", "for", "while", "do", "switch", "case",
-  "break", "continue", "return", "throw", "try", "catch", "finally",
-  "new", "delete", "typeof", "instanceof", "void", "in", "of",
-  "function", "class", "const", "let", "var",
-  "import", "export", "default", "from",
-  "async", "await", "yield",
+  "if",
+  "else",
+  "for",
+  "while",
+  "do",
+  "switch",
+  "case",
+  "break",
+  "continue",
+  "return",
+  "throw",
+  "try",
+  "catch",
+  "finally",
+  "new",
+  "delete",
+  "typeof",
+  "instanceof",
+  "void",
+  "in",
+  "of",
+  "function",
+  "class",
+  "const",
+  "let",
+  "var",
+  "import",
+  "export",
+  "default",
+  "from",
+  "async",
+  "await",
+  "yield",
 ]);
 
 export function isOperator(token: string): boolean {

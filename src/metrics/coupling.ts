@@ -76,11 +76,7 @@ function extractImports(source: string): DependencyInfo[] {
   return imports;
 }
 
-function isMatchingImport(
-  fromFile: string,
-  importPath: string,
-  targetFile: string,
-): boolean {
+function isMatchingImport(fromFile: string, importPath: string, targetFile: string): boolean {
   // Simplified path resolution
   const fromDir = fromFile.substring(0, fromFile.lastIndexOf("/"));
   const resolved = resolvePath(fromDir, importPath);

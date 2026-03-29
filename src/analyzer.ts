@@ -62,8 +62,7 @@ function analyzeFile(
       ? round(functions.reduce((sum, f) => sum + f.complexity, 0) / functions.length)
       : 0;
 
-  const maxComplexity =
-    functions.length > 0 ? Math.max(...functions.map((f) => f.complexity)) : 0;
+  const maxComplexity = functions.length > 0 ? Math.max(...functions.map((f) => f.complexity)) : 0;
 
   const maintainabilityIndex = computeMaintainabilityIndex(
     halstead.volume,
@@ -121,8 +120,7 @@ function computeSummary(files: FileAnalysis[]): ProjectSummary {
     totalDuplicates += file.duplicates.length;
   }
 
-  const averageComplexity =
-    totalFunctions > 0 ? round(totalComplexity / totalFunctions) : 0;
+  const averageComplexity = totalFunctions > 0 ? round(totalComplexity / totalFunctions) : 0;
   const averageMaintainability =
     files.length > 0 ? round(totalMaintainability / files.length) : 100;
 
@@ -158,10 +156,7 @@ function computeOverallScore(
 
   const maintScore = maintainability;
   const complexityScore = Math.max(0, 100 - (avgComplexity - 1) * 10);
-  const duplicationScore =
-    totalFiles > 0
-      ? Math.max(0, 100 - (duplicates / totalFiles) * 25)
-      : 100;
+  const duplicationScore = totalFiles > 0 ? Math.max(0, 100 - (duplicates / totalFiles) * 25) : 100;
 
   return 0.5 * maintScore + 0.3 * complexityScore + 0.2 * duplicationScore;
 }
@@ -174,9 +169,7 @@ async function discoverFiles(options: AnalyzeOptions): Promise<string[]> {
     return [targetPath];
   }
 
-  const patterns = options.extensions.map(
-    (ext) => `${targetPath}/**/*${ext}`,
-  );
+  const patterns = options.extensions.map((ext) => `${targetPath}/**/*${ext}`);
 
   const ignorePatterns = [
     "**/node_modules/**",

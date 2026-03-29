@@ -2,7 +2,7 @@ import { LocMetrics } from "../types.js";
 
 export function analyzeLoc(source: string): LocMetrics {
   const lines = source.split("\n");
-  let total = lines.length;
+  const total = lines.length;
   let blank = 0;
   let comment = 0;
   let source_lines = 0;
